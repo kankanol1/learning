@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    # jdbc:mysql://localhost:3306/learning 数据库地址
+    url: jdbc:mysql://localhost:3306/learning?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: root # 数据库用户名
+    password: # 数据库密码
+    driver-class-name: com.mysql.cj.jdbc.Driver  # 数据库驱动
+
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+  devtools:
+    restart:
+      log-condition-evaluation-delta: false
+  jpa:
+    hibernate:
+      # ddl-auto: create-drop
+      #      ddl-auto: none
+      ddl-auto: update
+      #  create-drop  如果实体对应的表已存在，先删除再创建，否则直接创建
+      #  ！！！注意： 第一次运行时可设置为 create-drop, 这样就不需要手动创建数据库表, 但是后面运行务必设置为none
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
