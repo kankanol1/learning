@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 
 @ApiSort(value = 1)//:给接口排序
 //
@@ -64,6 +63,11 @@ public class ProfessorController {
     }
 
 
+    /**
+     * response数据处理
+     * @param pe
+     * @return
+     */
     private ResponseInfo computer(Object pe) {
         ResponseInfo responseInfo = pe != null ?
                 new ResponseInfo(Status.RESPONSE_OK, Info.PARAMS_RIGHT, pe)
