@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="https://unpkg.com/v-wechat-auth"></script>
+</head>
+<body>
+<div id="app">
+<!--    <i-button @click="show">Click me!</i-button>-->
+<!--    <Modal v-model="visible" title="Welcome">Welcome to ViewUI</Modal>-->
+<!--    <i-button id="checkJsApi">JsApi</i-button>-->
+        your openid is: {{user.openid}}
+
+</div>
+<script>
+
+  var url = "http://u26frt.natappfree.cc";
+
+  var str = "https://open.weixin.qq.com/connect/oauth2/authorize?" +
+      "appid=" + "wxfad3666c617a12e9" +
+      "&redirect_uri=" + encodeURIComponent(url) +
+      "&response_type=" + "code" +
+      "&scope=" + "snsapi_userinfo" +
+      "&state=" + "123" + "#wechat_redirect";
+
+  str = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfad3666c617a12e9&redirect_uri=http%3A%2F%2Fu26frt.natappfree.cc&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+  str = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfad3666c617a12e9&redirect_uri=http%3A%2F%2Fu26frt.natappfree.cc&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+
+
+    console.log(str);
+    $.ajax({
+      url: url + "/api/sys/auth/sigs",
+      type: 'post',
+      dataType: 'json',
+      contentType: "application/x-www-form-urlencoded; charset=utf-8",
+      data: {
+        'url': str
+      },
+      success: function (data) {
+        console.log("数据：",data);
+      },
+
+    });
+
+  function getToken() {
+    $.ajax({
+      url: ctxf + "/wx/jsapi/aa",
+      type: 'post',
+      dataType: 'json',
+      contentType: "application/x-www-form-urlencoded; charset=utf-8",
+      data: {
+        'url': location.href.split('#')[0]
+      },
+      success: function (data) {
+        wx.config({
+          debug: false,
+          appId: data.appId,
+          timestamp: data.timestamp,
+          nonceStr: data.nonceStr,
+          signature: data.signature,
+          jsApiList: ['checkJsApi', 'onMenuShareTimeline',
+            'onMenuShareAppMessage', 'onMenuShareQQ',
+            'onMenuShareWeibo', 'hideMenuItems',
+            'showMenuItems', 'hideAllNonBaseMenuItem',
+            'showAllNonBaseMenuItem', 'translateVoice',
+            'startRecord', 'stopRecord', 'onRecordEnd',
+            'playVoice', 'pauseVoice', 'stopVoice',
+            'uploadVoice', 'downloadVoice', 'chooseImage',
+            'previewImage', 'uploadImage', 'downloadImage',
+            'getNetworkType', 'openLocation', 'getLocation',
+            'hideOptionMenu', 'showOptionMenu', 'closeWindow',
+            'scanQRCode', 'chooseWXPay',
+            'openProductSpecificView', 'addCard', 'chooseCard',
+            'openCard', 'updateAppMessageShareData', 'updateTimelineShareData']
+        });
+      }
+    });
+  }
+
+
+
+
+
+/*  var config = {
+    appId: 'wxfad3666c617a12e9', // your wechat appid,
+    scope: 'snsapi_userinfo', // snsapi_base or snsapi_userinfo
+    authorize: function (code, success, fail) {
+      return axios.get('your backend api here', {params: {code: code}})
+          .then(function (res) {
+            var data = (res && res.data) || {} // response data should at least contain openid
+            return data
+          })
+    }
+  }
+
+  Vue.use(VWechatAuth);
+  new Vue({
+    el: '#app',
+    data: {
+      visible: false,
+      user: {}
+    },
+    methods: {
+      show: function () {
+        this.visible = true;
+      }
+    },
+    wechatAuth: new VWechatAuth(config),
+    created:function () {
+      this.$wechatAuth.authorize()
+          .then(function(user){this.user = user})
+    }
+  })*/
+</script>
+</body>
+</html>

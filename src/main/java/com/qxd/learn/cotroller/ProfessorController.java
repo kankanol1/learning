@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @ApiSort(value = 1)//:给接口排序
-//
 @Controller
 @RequestMapping("/api/sys/professor")
 @Api(value = "教授", tags = "教授API")

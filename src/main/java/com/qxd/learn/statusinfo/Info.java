@@ -2,7 +2,7 @@ package com.qxd.learn.statusinfo;
 
 public class Info {
 
-    public static final String PARAMS_RIGHT = "数据获取成功";
+    public static final String PARAMS_RIGHT = "成功";
     public static final String PARAMS_ERR = "参数异常";
     public static final String SERVER_ERR = "服务器端错误";
     public static final String DATABASE_ERR = "数据库错误";

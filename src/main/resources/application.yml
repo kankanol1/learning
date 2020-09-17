@@ -1,9 +1,29 @@
+#指定web 的 contex path
+#server.contextPath=/myapp
+  #指定服务端口
+
+server:
+  port: 8080
+  #指定服务端口
 spring:
+  resources:
+    static-locations: classpath:/resources,classpath:/static,classpath:/public,classpath:/templates
+  mvc:
+#    view:
+#      prefix: static/html/
+#      suffix: .html
+    static-path-pattern: /**
+#  thymeleaf:
+#    prefix:
+#      classpath: /templates
+#    cache: false
+#    suffix: .html
   datasource:
     # jdbc:mysql://localhost:3306/learning 数据库地址
+#    url: jdbc:mysql://172.17.0.4:3306/learning?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     url: jdbc:mysql://localhost:3306/learning?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: root # 数据库用户名
-    password: # 数据库密码
+    password:  # 数据库密码
     driver-class-name: com.mysql.cj.jdbc.Driver  # 数据库驱动
 
     hikari:

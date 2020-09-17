@@ -1,0 +1,9 @@
+<xml>
+    <ToUserName><![CDATA[gh_c2********98]]></ToUserName>
+    <FromUserName><![CDATA[o-BAy0********diCIE]]></FromUserName>
+    <CreateTime>1132690210</CreateTime>
+    <MsgType><![CDATA[event]]></MsgType>
+    <Event><![CDATA[VIEW]]></Event>
+    <EventKey><![CDATA[https://****.***.***/index.html]]></EventKey>
+    <MenuId>400000089</MenuId>
+</xml>
